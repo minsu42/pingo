@@ -107,7 +107,7 @@ erDiagram
 | VPS | vps_map | VPS 맵 버전 | 필수 |
 | VPS | vps_reference_image | VPS 기준 이미지 | 중요 |
 | VPS | localization_log | 위치 인식 시도 로그 | 중요 |
-| 위치 공유 | location_share | 사용자 위치 공유 | 도전 |
+| 위치 공유 | location_share | 사용자 위치 공유 | 필수 |
 | 다국어 | translation | 다국어 문구 | 중요 |
 | 운영 | admin_audit_log | 관리자 수정 이력 | 권장 |
 
@@ -580,7 +580,7 @@ VPS 성공률, 실패율, 수동 위치 선택 비율을 분석하기 위한 로
 
 사용자 간 위치 공유 정보를 저장한다.
 
-위치 공유는 MVP 도전 기능이다.
+위치 공유는 최종 기능 요구사항 32개에 포함된 필수 기능이다.
 
 | 컬럼 | 타입 예시 | 설명 | 제약 |
 | --- | --- | --- | --- |
@@ -762,14 +762,34 @@ MVP 구현에 필요한 최소 테이블은 다음과 같다.
 
 ---
 
-## 10. 아직 의사결정이 필요한 사항
+## 10. 데이터 소유권 기준
+
+데이터 소유권은 `PinGo_역할분배_최종기획안_v4.md`를 따른다.
+
+| 데이터 영역 | 최종 책임 |
+| --- | --- |
+| station, station_floor, floor_map | 신재령 |
+| facility, exit_detail, nearby_place, place_exit_recommendation | 신재령 |
+| route_node, route_edge | 신재령 |
+| user_session | 이정우 |
+| consultation_session, consultation_event | 오서현 |
+| counselor, admin | 오서현 |
+| vps_map, vps_reference_image | 강민수 |
+| localization_log | 이정우 |
+| location_share | 이정우 |
+| translation | 최주연 |
+
+AI 모델·VPS 구축 데이터는 강민수가 책임지고, AI 서버 호출·응답 검증·상태 판정은 이정우가 책임진다. 신재령은 위치 결과를 지도 좌표계와 route_node에 연결하는 앵커링을 책임진다.
+
+---
+
+## 11. 아직 의사결정이 필요한 사항
 
 다음 항목만 추후 확정한다.
 
-1. MVP 대상 역 최종 선정
-2. 실제 시연 대표 동선 확정
+1. 실제 시연 대표 동선 확정
 
-## 11. 구현 중 검증할 사항
+## 12. 구현 중 검증할 사항
 
 1. 실제 배포 도메인 확정
 2. 추후 일본어·중국어 확장 시 `translation` 테이블 적용 시점 검토

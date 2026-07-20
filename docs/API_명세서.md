@@ -96,7 +96,21 @@ Authorization: Bearer {accessToken}
 | HTTPS 인증서 | Let's Encrypt 기준 |
 | 다국어 응답 | `nameKo`, `nameEn`을 함께 응답하고 프론트에서 선택 |
 
-### 2.6 공통 데이터 타입
+### 2.6 API 책임 기준
+
+API 책임자는 `PinGo_역할분배_최종기획안_v4.md`를 따른다.
+
+| API 영역 | 최종 책임 |
+| --- | --- |
+| 역·지도·시설·목적지 검색·출구 추천·경로 | 신재령 |
+| 인증·상담·상담자·관리자 로그인·WebRTC signaling·DataChannel 계약 | 오서현 |
+| VPS 이미지 요청·AI Adapter·위치 인식 상태 판정·외부 지도·위치 공유·배포 네트워크 | 이정우 |
+| 카메라·IMU·실시간 방향 보정·화면 표시 | 김은지 |
+| 교통카드 추천 UX·정적 룰·문구 | 최주연 |
+
+VPS 위치 인식 API에서 이정우는 AI 서버 호출, 응답 검증, timeout, 상태 판정을 책임진다. 신재령은 검증된 위치 결과의 좌표 앵커링과 유효 노드 매핑을 책임진다. 실시간 IMU 기반 방향 보정은 프론트엔드 책임이며 백엔드 API는 지속적인 센서 스트림을 처리하지 않는다.
+
+### 2.7 공통 데이터 타입
 
 #### 좌표
 
@@ -1412,7 +1426,7 @@ multipart/form-data
 
 ## 14. 위치 공유 API
 
-위치 공유는 도전 기능이다.
+위치 공유는 최종 기능 요구사항 32개에 포함된 필수 기능이다.
 
 ## 14.1 위치 공유 링크 생성
 
@@ -1474,7 +1488,7 @@ multipart/form-data
 
 ## 15. 교통카드 추천 API
 
-교통카드 추천은 후순위 기능이다.
+교통카드 추천은 최종 기능 요구사항 32개에 포함된 필수 기능이다.
 
 ## 15.1 교통카드 추천
 
@@ -1540,9 +1554,11 @@ multipart/form-data
 | 위치 인식 | POST /vps/localize, POST /localization/manual |
 | 경로 | POST /routes/indoor/options, POST /routes/indoor, POST /routes/indoor/recalculate |
 | 외부 지도 | POST /external-maps/directions |
+| 위치 공유 | POST /location-shares, GET /location-shares/{shareId} |
 | 상담 | POST /consultations, GET /consultations/{consultationId}, DELETE /consultations/{consultationId} |
 | 상담자 | POST /counselors/login, GET /counselor/consultations, POST /consultations/{id}/accept |
 | WebRTC | WS /ws/signaling |
+| 교통카드 | POST /transport-cards/recommend |
 | 관리자 | 관리자 데이터 등록 API 전체 구현 |
 
 ---
@@ -1577,8 +1593,7 @@ multipart/form-data
 
 ## 19. 아직 의사결정이 필요한 사항
 
-1. MVP 대상 역 최종 선정
-2. 실제 시연 대표 동선 확정
+1. 실제 시연 대표 동선 확정
 
 ## 20. 구현 중 검증할 사항
 
