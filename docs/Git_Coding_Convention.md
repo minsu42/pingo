@@ -65,7 +65,13 @@ feature → develop → main
 feature/{파트}-{기능명}
 ```
 
-브랜치명은 모두 소문자로 작성한다.
+Jira 이슈가 있는 작업은 이슈 키를 앞에 포함한다.
+
+```bash
+feature/{JIRA-KEY}-{파트}-{기능명}
+```
+
+Jira 키를 제외한 파트와 기능명은 소문자로 작성한다.
 
 ### FE 예시
 
@@ -87,6 +93,7 @@ feature/be-indoor-route
 feature/be-vps-localization
 feature/be-webrtc-signaling
 feature/be-admin-facility
+feature/S15P11A206-58-be-backend-init
 ```
 
 ### Docs 예시
@@ -113,6 +120,12 @@ git checkout -b feature/be-indoor-route
 
 ```bash
 <타입>: <내용>
+```
+
+Jira 이슈가 있는 작업은 메시지 앞에 이슈 키를 붙인다.
+
+```bash
+<JIRA-KEY> <타입>: <내용>
 ```
 
 ### Commit Type
@@ -152,6 +165,7 @@ fix: Fix WebRTC signaling room validation
 api: Update indoor route response format
 db: Add station floor seed data
 docs: Add Git coding convention
+S15P11A206-58 chore: Initialize spring boot backend project
 
 # 나쁜 예
 feat: 기능 추가함
@@ -189,6 +203,12 @@ feature 브랜치의 여러 커밋을 `develop`에 하나의 커밋으로 합친
 [파트] <타입>: <내용>
 ```
 
+Jira 이슈가 있는 PR은 제목 앞에 이슈 키를 붙인다.
+
+```bash
+<JIRA-KEY> [파트] <타입>: <내용>
+```
+
 예시:
 
 ```bash
@@ -197,6 +217,7 @@ feature 브랜치의 여러 커밋을 `develop`에 하나의 커밋으로 합친
 [BE] fix: WebRTC signaling 연결 오류 수정
 [FE] feat: 출구 추천 화면 구현
 [DOCS] docs: Git coding convention 추가
+S15P11A206-58 [BE] chore: Spring Boot 백엔드 빈 프로젝트 생성
 ```
 
 ---
