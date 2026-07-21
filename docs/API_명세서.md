@@ -1231,9 +1231,17 @@ WebRTC 연결 후 상담자 조작 정보는 DataChannel로 전달한다.
 
 ---
 
-## 13.2 역 등록
+## 13.2 역 관리
 
-### POST `/admin/stations`
+| Method | Endpoint | 설명 |
+| --- | --- | --- |
+| POST | `/admin/stations` | 역 등록 |
+| GET | `/admin/stations` | 활성 역 목록 조회 |
+| GET | `/admin/stations/{stationId}` | 역과 층 상세 조회 |
+| PATCH | `/admin/stations/{stationId}` | 역 정보 수정 |
+| DELETE | `/admin/stations/{stationId}` | 역 비활성화 |
+
+### 역 등록·수정 Request
 
 #### Request
 
@@ -1247,7 +1255,7 @@ WebRTC 연결 후 상담자 조작 정보는 DataChannel로 전달한다.
 }
 ```
 
-#### Response
+### 역 등록 Response
 
 ```json
 {
@@ -1261,9 +1269,16 @@ WebRTC 연결 후 상담자 조작 정보는 DataChannel로 전달한다.
 
 ---
 
-## 13.3 층 등록
+## 13.3 층 관리
 
-### POST `/admin/stations/{stationId}/floors`
+| Method | Endpoint | 설명 |
+| --- | --- | --- |
+| POST | `/admin/stations/{stationId}/floors` | 해당 역에 층 등록 |
+| GET | `/admin/stations/{stationId}/floors` | 해당 역의 층 목록 조회 |
+| PATCH | `/admin/floors/{floorId}` | 층 정보 수정 |
+| DELETE | `/admin/floors/{floorId}` | 층 삭제 |
+
+### 층 등록·수정 Request
 
 #### Request
 
@@ -1274,6 +1289,20 @@ WebRTC 연결 후 상담자 조작 정보는 DataChannel로 전달한다.
   "floorOrder": 2
 }
 ```
+
+### 층 등록 Response
+
+```json
+{
+  "success": true,
+  "data": {
+    "floorId": 2
+  },
+  "message": null
+}
+```
+
+동일한 역에는 같은 `floorCode`를 중복 등록할 수 없다. 지도·시설·경로 노드 등에서 참조 중인 층은 삭제할 수 없다.
 
 ---
 
