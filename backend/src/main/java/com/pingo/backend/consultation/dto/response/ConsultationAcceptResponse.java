@@ -3,14 +3,14 @@ package com.pingo.backend.consultation.dto.response;
 import com.pingo.backend.consultation.domain.ConsultationSession;
 import com.pingo.backend.consultation.domain.ConsultationStatus;
 
-public record ConsultationResponse (
+public record ConsultationAcceptResponse(
         String consultationId,
         ConsultationStatus status,
         Long counselorId,
         String signalingRoomId
-){
-    public static ConsultationResponse from(ConsultationSession session){
-        return new ConsultationResponse(
+) {
+    public static ConsultationAcceptResponse from(ConsultationSession session) {
+        return new ConsultationAcceptResponse(
                 session.getConsultationId(),
                 session.getStatus(),
                 session.getCounselorId(),
