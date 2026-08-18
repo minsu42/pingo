@@ -61,6 +61,45 @@ MVP 필수 기능은 다음과 같습니다.
 - 상담자 로그인, 상담 요청 목록, WebRTC 상담
 - 역, 지도, 시설, 경로, 상담자 기본 관리자 기능
 
+## 서비스 화면
+
+시연 환경은 Android Chrome이며, 아래 화면은 브라우저 UI를 제외한 실제 사용자 웹앱 영역입니다.
+
+### 1. 여정 설정
+
+| 언어 선택 | 출발지 확인 및 목적지 검색 |
+| --- | --- |
+| <img src="docs/screenshots/user-flow/01-language-selection.png" width="320" alt="한국어와 영어 중 사용할 언어를 선택하는 화면"/> | <img src="docs/screenshots/user-flow/02-destination-search.png" width="320" alt="현재 역을 확인하고 목적지를 검색하는 화면"/> |
+| 한국어와 영어 중 안내 언어를 선택합니다. | 현재 역을 확인한 뒤 역 내부 시설이나 역 주변 장소를 목적지로 검색합니다. |
+
+### 2. 현재 위치 인식
+
+| 촬영 가이드 | 위치 인식 결과 |
+| --- | --- |
+| <img src="docs/screenshots/user-flow/03-position-guide.png" width="320" alt="현재 위치 인식을 위한 정면 촬영 가이드 화면"/> | <img src="docs/screenshots/user-flow/04-position-detected.png" width="320" alt="카메라 촬영으로 현재 위치를 인식한 화면"/> |
+| 정면의 특징점을 충분히 담을 수 있도록 촬영 방법을 안내합니다. | 카메라 영상과 VPS 결과를 이용해 현재 층과 위치를 확인합니다. |
+
+### 3. 경로 선택 및 추적 시작
+
+| 경로 옵션 선택 | 실시간 위치 추적 시작 |
+| --- | --- |
+| <img src="docs/screenshots/user-flow/05-route-options.png" width="320" alt="빠른 경로와 엘리베이터 우선 경로를 선택하는 화면"/> | <img src="docs/screenshots/user-flow/06-live-tracking-prompt.png" width="320" alt="실시간 위치 추적을 시작하는 안내 화면"/> |
+| 빠른 경로와 엘리베이터 이용 경로의 거리·예상 시간을 비교합니다. | 선택한 경로를 기준으로 실시간 위치 추적과 길 안내를 시작합니다. |
+
+### 4. AR 실내 길 안내
+
+| 카메라·지도 결합 안내 | 층간 이동 안내 |
+| --- | --- |
+| <img src="docs/screenshots/user-flow/07-ar-navigation.png" width="320" alt="카메라 AR 안내와 실내 지도를 함께 보여주는 화면"/> | <img src="docs/screenshots/user-flow/08-floor-transition.png" width="320" alt="다른 층으로 이동하도록 안내하는 화면"/> |
+| 카메라 위 방향 화살표와 하단 실내 지도를 함께 표시합니다. | 계단·에스컬레이터·엘리베이터를 이용해야 하는 층간 이동을 별도로 안내합니다. |
+
+### 5. 경로 진행 및 도착
+
+| 남은 경로 확인 | 목적지 도착 |
+| --- | --- |
+| <img src="docs/screenshots/user-flow/09-navigation-progress.png" width="320" alt="현재 위치와 목적지까지 남은 경로를 보여주는 화면"/> | <img src="docs/screenshots/user-flow/10-arrival.png" width="320" alt="3번 출구 도착 완료 화면"/> |
+| 현재 위치, 회전 방향, 남은 거리와 전체 경로 진행 상황을 확인합니다. | 목적지 도착을 확인하고 새 여정을 시작하거나 상담을 요청할 수 있습니다. |
+
 ## 주요 기능
 
 ### 실내 위치 인식
